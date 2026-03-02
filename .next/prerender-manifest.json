@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "62b6b93a44dab3cbecf4df036ea1cde6",
-    "previewModeSigningKey": "d7b9d1746fe5d2d801c6b5321e365f5677f462f5709168b1b33aafea2f30ed81",
-    "previewModeEncryptionKey": "bf2a8db1bebf31cc079b9aa50a877eb8b9aa1df093b32ee3a2af89c7b9c765f6"
-  }
-}
+{"version":4,"routes":{"/tjanster/badrumsrenovering-stockholm":{}},"dynamicRoutes":{"/tjanster/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/tjanster/[slug]","routeRegex":"^\\/tjanster\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"3fc0d0c6d50f170ec1d0d5416c6df21c","previewModeSigningKey":"0f1195add31103904e755563bf90f8b992724126d344ba0a725aa157a59762df","previewModeEncryptionKey":"9358092326d9b960781296c59ffcab0fe9f246798230af6c546621dbc1235370"}}

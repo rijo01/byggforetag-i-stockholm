@@ -1,27 +1,47 @@
 import { MetadataRoute } from "next";
+import { getAllTjanster, getAllStadsdelar, getAllGuider, getAllBlogg } from "@/lib/content";
 
-const baseUrl = "https://byggforetag-i-stockholm.se";
-
-const tjanster = ["badrumsrenovering", "koksrenovering", "tillbyggnad", "nybyggnation", "totalrenovering", "fasadrenovering", "takrenovering", "malning", "golv", "el", "vvs", "attefallshus"];
-const omraden = ["sodermalm", "ostermalm", "norrmalm", "kungsholmen", "vasastan", "solna", "nacka", "lidingo", "taby", "huddinge", "bromma", "enskede"];
+const BASE_URL = "https://byggforetag-i-stockholm.se";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
-    { url: `${baseUrl}/tjanster`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/stadsdelar`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${baseUrl}/guider`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${baseUrl}/hitta-expert`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${baseUrl}/om-oss`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.4 },
+  const tjanster = getAllTjanster().map((t) => ({
+    url: `${BASE_URL}/tjanster/${t.meta.slug}`,
+    lastModified: new Date(t.meta.updatedAt || t.meta.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const stadsdelar = getAllStadsdelar().map((s) => ({
+    url: `${BASE_URL}/stadsdelar/${s.meta.slug}`,
+    lastModified: new Date(s.meta.updatedAt || s.meta.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const guider = getAllGuider().map((g) => ({
+    url: `${BASE_URL}/guider/${g.meta.slug}`,
+    lastModified: new Date(g.meta.updatedAt || g.meta.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const blogg = getAllBlogg().map((b) => ({
+    url: `${BASE_URL}/blogg/${b.meta.slug}`,
+    lastModified: new Date(b.meta.updatedAt || b.meta.publishedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [
+    { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
+    { url: `${BASE_URL}/tjanster`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE_URL}/stadsdelar`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE_URL}/guider`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/hitta-expert`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/om-oss`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.4 },
+    ...tjanster,
+    ...stadsdelar,
+    ...guider,
+    ...blogg,
   ];
-
-  const tjanstPages = tjanster.map((slug) => ({
-    url: `${baseUrl}/tjanster/${slug}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8,
-  }));
-
-  const omradPages = omraden.map((slug) => ({
-    url: `${baseUrl}/stadsdelar/${slug}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7,
-  }));
-
-  return [...staticPages, ...tjanstPages, ...omradPages];
 }
