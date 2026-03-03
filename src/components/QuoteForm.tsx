@@ -2,14 +2,20 @@
 
 import { useState } from "react";
 
-export default function QuoteForm() {
+interface QuoteFormProps {
+  compact?: boolean;
+  serviceType?: string;
+  district?: string;
+}
+
+export default function QuoteForm({ compact, serviceType, district }: QuoteFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "",
-    area: "",
+    service: serviceType || "",
+    area: district || "",
     description: "",
     budget: "",
   });
@@ -21,7 +27,7 @@ export default function QuoteForm() {
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
+      <div className={`bg-green-50 border border-green-200 rounded-2xl ${compact ? "p-5" : "p-8"} text-center`}>
         <div className="w-14 h-14 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -29,6 +35,55 @@ export default function QuoteForm() {
         </div>
         <h3 className="font-display text-xl text-gray-900 mb-2">Tack för din förfrågan!</h3>
         <p className="text-gray-600 text-sm">Vi matchar dig med kvalificerade byggföretag inom 24 timmar. Du får upp till 3 offerter att jämföra.</p>
+      </div>
+    );
+  }
+
+  if (compact) {
+    return (
+      <div className="space-y-3">
+        <div>
+          <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Namn *" />
+        </div>
+        <div>
+          <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Telefon *" />
+        </div>
+        <div>
+          <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="E-post *" />
+        </div>
+        {!serviceType && (
+          <div>
+            <select value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
+              <option value="">Välj projekttyp</option>
+              <option value="badrumsrenovering">Badrumsrenovering</option>
+              <option value="koksrenovering">Köksrenovering</option>
+              <option value="tillbyggnad">Tillbyggnad</option>
+              <option value="nybyggnation">Nybyggnation</option>
+              <option value="fasadrenovering">Fasadrenovering</option>
+              <option value="takrenovering">Takrenovering</option>
+              <option value="totalrenovering">Totalrenovering</option>
+              <option value="malning">Målning</option>
+              <option value="golv">Golvläggning</option>
+              <option value="el">Elarbeten</option>
+              <option value="vvs">VVS</option>
+              <option value="ovrigt">Övrigt</option>
+            </select>
+          </div>
+        )}
+        <div>
+          <textarea rows={3} value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
+            placeholder="Beskriv ditt projekt kort..." />
+        </div>
+        <button type="button" onClick={handleSubmit}
+          className="w-full px-6 py-2.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 transition-all shadow-md text-sm">
+          Skicka förfrågan – Gratis
+        </button>
+        <p className="text-xs text-gray-400 text-center">Inga förpliktelser. Upp till 3 offerter inom 24h.</p>
       </div>
     );
   }
