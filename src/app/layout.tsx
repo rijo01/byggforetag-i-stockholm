@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     "köksrenovering stockholm",
     "totalentreprenad stockholm",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
   openGraph: {
     title: "Byggföretag i Stockholm – Hitta rätt byggfirma",
     description: "Hitta pålitliga byggföretag i Stockholm. Jämför, läs omdömen och få offerter gratis.",
@@ -26,6 +34,7 @@ export const metadata: Metadata = {
     siteName: "Byggföretag i Stockholm",
     locale: "sv_SE",
     type: "website",
+    images: [{ url: "https://byggforetag-i-stockholm.se/og-image.jpg", width: 1200, height: 630 }],
   },
   robots: {
     index: true,
