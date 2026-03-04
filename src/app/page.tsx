@@ -29,9 +29,9 @@ const omraden = [
 ];
 
 const guider = [
-  { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 7 tips", category: "Tips" },
-  { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", category: "Badrum" },
-  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Allt du behöver veta", category: "Ekonomi" },
+  { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 10 tips", category: "Tips" },
+  { slug: "planera-renovering", title: "Planera din renovering – Steg för steg", category: "Planering" },
+  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Komplett guide", category: "Ekonomi" },
 ];
 
 export default function Home() {

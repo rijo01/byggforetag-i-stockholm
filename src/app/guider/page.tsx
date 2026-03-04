@@ -10,14 +10,14 @@ export const metadata: Metadata = {
 };
 
 const guider = [
-  { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 7 tips", date: "2025-02-15", category: "Tips" },
-  { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", date: "2025-02-10", category: "Badrum" },
-  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2025 – Allt du behöver veta", date: "2025-02-08", category: "Ekonomi" },
-  { slug: "koksrenovering-planering", title: "Planera din köksrenovering – Steg för steg", date: "2025-02-01", category: "Kök" },
-  { slug: "bygglov-stockholm", title: "Bygglov i Stockholm – Så ansöker du", date: "2025-01-28", category: "Juridik" },
-  { slug: "totalrenovering-checklista", title: "Checklista för totalrenovering av lägenhet", date: "2025-01-22", category: "Renovering" },
-  { slug: "attefallshus-regler", title: "Attefallshus – Regler, pris och tips 2025", date: "2025-01-15", category: "Nybyggnation" },
-  { slug: "vanliga-misstag-renovering", title: "10 vanliga misstag vid renovering – Så undviker du dem", date: "2025-01-10", category: "Tips" },
+  { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 10 tips", date: "2026-03-04", category: "Tips" },
+  { slug: "planera-renovering", title: "Planera din renovering – Steg för steg", date: "2026-03-04", category: "Planering" },
+  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Komplett guide", date: "2026-03-04", category: "Ekonomi" },
+  { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", date: "2026-03-04", category: "Badrum" },
+  { slug: "bygglov-stockholm", title: "Bygglov i Stockholm – Så ansöker du", date: "2026-03-04", category: "Juridik" },
+  { slug: "bygga-om-kostnad", title: "Vad kostar det att bygga om? Prislista 2026", date: "2026-03-04", category: "Kostnad" },
+  { slug: "stambyte-guide", title: "Stambyte – Komplett guide för bostadsrätter", date: "2026-03-04", category: "Bostadsrätt" },
+  { slug: "energirenovering-guide", title: "Energirenovering – Spara pengar och miljö", date: "2026-03-04", category: "Energi" },
 ];
 
 export default function GuiderPage() {
