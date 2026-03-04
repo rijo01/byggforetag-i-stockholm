@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const footerLinks = {
   tjanster: [
-    { href: "/tjanster/badrumsrenovering", label: "Badrumsrenovering" },
-    { href: "/tjanster/koksrenovering", label: "Köksrenovering" },
-    { href: "/tjanster/tillbyggnad", label: "Tillbyggnad" },
-    { href: "/tjanster/nybyggnation", label: "Nybyggnation" },
-    { href: "/tjanster/fasadrenovering", label: "Fasadrenovering" },
-    { href: "/tjanster/takrenovering", label: "Takrenovering" },
+    { href: "/tjanster/badrumsrenovering-stockholm", label: "Badrumsrenovering" },
+    { href: "/tjanster/koksrenovering-stockholm", label: "Köksrenovering" },
+    { href: "/tjanster/tillbyggnad-stockholm", label: "Tillbyggnad" },
+    { href: "/tjanster/nybyggnation-stockholm", label: "Nybyggnation" },
+    { href: "/tjanster/fasadrenovering-stockholm", label: "Fasadrenovering" },
+    { href: "/tjanster/takrenovering-stockholm", label: "Takrenovering" },
   ],
   omraden: [
     { href: "/stadsdelar/sodermalm", label: "Södermalm" },

@@ -5,14 +5,14 @@ import TrustBadges from "@/components/TrustBadges";
 import QuoteForm from "@/components/QuoteForm";
 
 const tjanster = [
-  { slug: "badrumsrenovering", name: "Badrumsrenovering", icon: "🚿", desc: "Komplett badrumsrenovering med kakel, klinker, VVS och el.", price: "Från 80 000 kr" },
-  { slug: "koksrenovering", name: "Köksrenovering", icon: "🍳", desc: "Nytt kök med montering, el, VVS och vitvaror.", price: "Från 100 000 kr" },
-  { slug: "tillbyggnad", name: "Tillbyggnad", icon: "🏗️", desc: "Utöka din boyta med tillbyggnad eller påbyggnad.", price: "Från 200 000 kr" },
-  { slug: "totalrenovering", name: "Totalrenovering", icon: "🔨", desc: "Helrenovering av lägenhet eller villa.", price: "Från 300 000 kr" },
-  { slug: "fasadrenovering", name: "Fasadrenovering", icon: "🏠", desc: "Ny fasad, puts, målning och isolering.", price: "Från 150 000 kr" },
-  { slug: "takrenovering", name: "Takrenovering", icon: "🏘️", desc: "Takbyte, takläggning och takisolering.", price: "Från 120 000 kr" },
-  { slug: "malning", name: "Målning", icon: "🎨", desc: "Invändig och utvändig målning av professionella målare.", price: "Från 15 000 kr" },
-  { slug: "golv", name: "Golvläggning", icon: "🪵", desc: "Parkettgolv, klinkergolv, laminat och vinylgolv.", price: "Från 20 000 kr" },
+  { slug: "badrumsrenovering-stockholm", name: "Badrumsrenovering", icon: "🚿", desc: "Komplett badrumsrenovering med kakel, klinker, VVS och el.", price: "Från 80 000 kr" },
+  { slug: "koksrenovering-stockholm", name: "Köksrenovering", icon: "🍳", desc: "Nytt kök med montering, el, VVS och vitvaror.", price: "Från 100 000 kr" },
+  { slug: "tillbyggnad-stockholm", name: "Tillbyggnad", icon: "🏗️", desc: "Utöka din boyta med tillbyggnad eller påbyggnad.", price: "Från 200 000 kr" },
+  { slug: "totalrenovering-stockholm", name: "Totalrenovering", icon: "🔨", desc: "Helrenovering av lägenhet eller villa.", price: "Från 300 000 kr" },
+  { slug: "fasadrenovering-stockholm", name: "Fasadrenovering", icon: "🏠", desc: "Ny fasad, puts, målning och isolering.", price: "Från 150 000 kr" },
+  { slug: "takrenovering-stockholm", name: "Takrenovering", icon: "🏘️", desc: "Takbyte, takläggning och takisolering.", price: "Från 120 000 kr" },
+  { slug: "malning-stockholm", name: "Målning", icon: "🎨", desc: "Invändig och utvändig målning av professionella målare.", price: "Från 15 000 kr" },
+  { slug: "golv-stockholm", name: "Golvläggning", icon: "🪵", desc: "Parkettgolv, klinkergolv, laminat och vinylgolv.", price: "Från 20 000 kr" },
 ];
 
 const omraden = [
@@ -31,7 +31,7 @@ const omraden = [
 const guider = [
   { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 7 tips", category: "Tips" },
   { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", category: "Badrum" },
-  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2025 – Allt du behöver veta", category: "Ekonomi" },
+  { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Allt du behöver veta", category: "Ekonomi" },
 ];
 
 export default function Home() {
