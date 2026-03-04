@@ -3,31 +3,37 @@ import { getAllTjanster, getAllStadsdelar, getAllGuider, getAllBlogg } from "@/l
 
 const BASE_URL = "https://byggforetag-i-stockholm.se";
 
+function safeDate(dateStr?: string): Date {
+  if (!dateStr) return new Date();
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? new Date() : d;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const tjanster = getAllTjanster().map((t) => ({
     url: `${BASE_URL}/tjanster/${t.meta.slug}`,
-    lastModified: new Date(t.meta.updatedAt || t.meta.publishedAt),
+    lastModified: safeDate(t.meta.updatedAt || t.meta.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const stadsdelar = getAllStadsdelar().map((s) => ({
     url: `${BASE_URL}/stadsdelar/${s.meta.slug}`,
-    lastModified: new Date(s.meta.updatedAt || s.meta.publishedAt),
+    lastModified: safeDate(s.meta.updatedAt || s.meta.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const guider = getAllGuider().map((g) => ({
     url: `${BASE_URL}/guider/${g.meta.slug}`,
-    lastModified: new Date(g.meta.updatedAt || g.meta.publishedAt),
+    lastModified: safeDate(g.meta.updatedAt || g.meta.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   const blogg = getAllBlogg().map((b) => ({
     url: `${BASE_URL}/blogg/${b.meta.slug}`,
-    lastModified: new Date(b.meta.updatedAt || b.meta.publishedAt),
+    lastModified: safeDate(b.meta.updatedAt || b.meta.publishedAt),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
