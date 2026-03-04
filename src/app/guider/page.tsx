@@ -14,10 +14,12 @@ const guider = [
   { slug: "planera-renovering", title: "Planera din renovering – Steg för steg", date: "2026-03-04", category: "Planering" },
   { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Komplett guide", date: "2026-03-04", category: "Ekonomi" },
   { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", date: "2026-03-04", category: "Badrum" },
+  { slug: "koksrenovering-planering", title: "Planera köksrenovering – Steg för steg", date: "2026-03-04", category: "Kök" },
   { slug: "bygglov-stockholm", title: "Bygglov i Stockholm – Så ansöker du", date: "2026-03-04", category: "Juridik" },
   { slug: "bygga-om-kostnad", title: "Vad kostar det att bygga om? Prislista 2026", date: "2026-03-04", category: "Kostnad" },
   { slug: "stambyte-guide", title: "Stambyte – Komplett guide för bostadsrätter", date: "2026-03-04", category: "Bostadsrätt" },
   { slug: "energirenovering-guide", title: "Energirenovering – Spara pengar och miljö", date: "2026-03-04", category: "Energi" },
+  { slug: "totalrenovering-checklista", title: "Totalrenovering checklista – Allt du behöver veta", date: "2026-03-04", category: "Renovering" },
 ];
 
 export default function GuiderPage() {

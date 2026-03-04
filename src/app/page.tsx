@@ -30,8 +30,8 @@ const omraden = [
 
 const guider = [
   { slug: "valja-byggforetag", title: "Så väljer du rätt byggföretag – 10 tips", category: "Tips" },
-  { slug: "planera-renovering", title: "Planera din renovering – Steg för steg", category: "Planering" },
   { slug: "rot-avdrag-guide", title: "ROT-avdrag 2026 – Komplett guide", category: "Ekonomi" },
+  { slug: "badrumsrenovering-guide", title: "Komplett guide: Badrumsrenovering i Stockholm", category: "Badrum" },
 ];
 
 export default function Home() {
