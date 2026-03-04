@@ -10,6 +10,8 @@ interface QuoteFormProps {
 
 export default function QuoteForm({ compact, serviceType, district }: QuoteFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,9 +22,29 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
     budget: "",
   });
 
-  const handleSubmit = () => {
-    console.log("Quote request:", formData);
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.description) {
+      setError("Fyll i alla obligatoriska fält");
+      return;
+    }
+    setError("");
+    setSending(true);
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Något gick fel. Försök igen.");
+      }
+    } catch {
+      setError("Kunde inte skicka.");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -79,9 +101,10 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
             className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
             placeholder="Beskriv ditt projekt kort..." />
         </div>
-        <button type="button" onClick={handleSubmit}
-          className="w-full px-6 py-2.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 transition-all shadow-md text-sm">
-          Skicka förfrågan – Gratis
+        {error && <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-sm">{error}</div>}
+        <button type="button" onClick={handleSubmit} disabled={sending}
+          className="w-full px-6 py-2.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-md text-sm">
+          {sending ? "Skickar..." : "Skicka förfrågan – Gratis"}
         </button>
         <p className="text-xs text-gray-400 text-center">Inga förpliktelser. Upp till 3 offerter inom 24h.</p>
       </div>
@@ -179,9 +202,11 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
             placeholder="Beskriv vad du behöver hjälp med, storlek på projekt, eventuella önskemål..." />
         </div>
 
-        <button type="button" onClick={handleSubmit}
-          className="w-full px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 transition-all shadow-md hover:shadow-lg text-sm">
-          Skicka offertförfrågan – Gratis
+        {error && <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">{error}</div>}
+
+        <button type="button" onClick={handleSubmit} disabled={sending}
+          className="w-full px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg text-sm">
+          {sending ? "Skickar..." : "Skicka offertförfrågan – Gratis"}
         </button>
         <p className="text-xs text-gray-400 text-center">Inga förpliktelser. Upp till 3 offerter inom 24h.</p>
       </div>
