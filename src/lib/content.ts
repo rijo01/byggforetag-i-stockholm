@@ -40,6 +40,15 @@ function getFilesFromDir(dir: string): ContentItem[] {
       const filePath = path.join(fullDir, filename);
       const raw = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(raw);
+      
+      // Force dates to strings (gray-matter converts them to Date objects)
+      if (data.publishedAt instanceof Date) {
+        data.publishedAt = data.publishedAt.toISOString().split('T')[0];
+      }
+      if (data.updatedAt instanceof Date) {
+        data.updatedAt = data.updatedAt.toISOString().split('T')[0];
+      }
+      
       return {
         meta: { ...data, slug: data.slug || filename.replace(/\.mdx?$/, "") } as ContentMeta,
         content,
