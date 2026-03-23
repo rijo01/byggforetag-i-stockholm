@@ -7,7 +7,8 @@ const navLinks = [
   { href: "/", label: "Hem" },
   { href: "/tjanster", label: "Tjänster" },
   { href: "/stadsdelar", label: "Områden" },
-  { href: "/guider", label: "Byggguider" },
+  { href: "/guider", label: "Guider" },
+  { href: "/blogg", label: "Blogg" },
   { href: "/hitta-expert", label: "Hitta expert" },
   { href: "/om-oss", label: "Om oss" },
 ];

@@ -20,7 +20,8 @@ const footerLinks = {
   info: [
     { href: "/om-oss", label: "Om oss" },
     { href: "/hitta-expert", label: "Hitta expert" },
-    { href: "/guider", label: "Byggguider" },
+    { href: "/guider", label: "Guider" },
+    { href: "/blogg", label: "Blogg" },
     { href: "/kontakt", label: "Kontakt" },
     { href: "/integritetspolicy", label: "Integritetspolicy" },
     { href: "/sitemap.xml", label: "Sitemap" },
