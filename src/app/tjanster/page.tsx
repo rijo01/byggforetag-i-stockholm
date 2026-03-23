@@ -10,18 +10,18 @@ export const metadata: Metadata = {
 };
 
 const tjanster = [
-  { slug: "badrumsrenovering", name: "Badrumsrenovering", icon: "🚿", desc: "Komplett badrumsrenovering inklusive rivning, tätskikt, kakel, klinker, VVS och el. Vi hjälper dig hitta specialister som levererar våtrum med garanti.", price: "80 000 – 250 000 kr", time: "3–6 veckor" },
-  { slug: "koksrenovering", name: "Köksrenovering", icon: "🍳", desc: "Nytt kök från planering till färdigt resultat. Inkluderar demontering, el, VVS, montering av köksinredning och vitvaror.", price: "100 000 – 400 000 kr", time: "4–8 veckor" },
-  { slug: "tillbyggnad", name: "Tillbyggnad", icon: "🏗️", desc: "Utöka din boyta med tillbyggnad, påbyggnad eller inglasning. Från bygglov till inflyttning.", price: "200 000 – 800 000 kr", time: "8–16 veckor" },
-  { slug: "nybyggnation", name: "Nybyggnation", icon: "🏠", desc: "Bygga nytt hus eller villa? Vi matchar dig med erfarna totalentreprenörer i Stockholm.", price: "Från 2 000 000 kr", time: "6–12 månader" },
-  { slug: "totalrenovering", name: "Totalrenovering", icon: "🔨", desc: "Helrenovering av lägenhet eller villa. Allt från stomme till ytskikt i en komplett lösning.", price: "300 000 – 1 500 000 kr", time: "8–20 veckor" },
-  { slug: "fasadrenovering", name: "Fasadrenovering", icon: "🏘️", desc: "Ny fasad, puts, målning och tilläggsisolering. Förbättra husets utseende och energieffektivitet.", price: "150 000 – 500 000 kr", time: "4–8 veckor" },
-  { slug: "takrenovering", name: "Takrenovering", icon: "🛖", desc: "Takbyte, omläggning av taktegel, plåttak eller takpapp. Inklusive underlagstak och isolering.", price: "120 000 – 400 000 kr", time: "2–6 veckor" },
-  { slug: "malning", name: "Målning", icon: "🎨", desc: "Invändig och utvändig målning av professionella målare. Väggar, tak, fönster, fasad och snickerier.", price: "15 000 – 80 000 kr", time: "1–3 veckor" },
-  { slug: "golv", name: "Golvläggning", icon: "🪵", desc: "Parkettgolv, laminat, vinyl, klinker eller trägolv. Slipning och renovering av befintliga golv.", price: "20 000 – 100 000 kr", time: "1–2 veckor" },
-  { slug: "el", name: "Elarbeten", icon: "⚡", desc: "Elinstallationer, gruppcentraler, belysning, laddboxar och smarta hem-lösningar av behöriga elektriker.", price: "10 000 – 150 000 kr", time: "1–4 veckor" },
-  { slug: "vvs", name: "VVS", icon: "🔧", desc: "Vattenledningar, avlopp, golvvärme, värmepumpar och ventilation av certifierade VVS-tekniker.", price: "15 000 – 200 000 kr", time: "1–4 veckor" },
-  { slug: "attefallshus", name: "Attefallshus", icon: "🏡", desc: "Bygglovsbefriade attefallshus som gäststuga, kontor eller uthyrningsobjekt. Nyckelfärdigt.", price: "300 000 – 700 000 kr", time: "6–12 veckor" },
+  { slug: "badrumsrenovering-stockholm", name: "Badrumsrenovering", icon: "🚿", desc: "Komplett badrumsrenovering inklusive rivning, tätskikt, kakel, klinker, VVS och el. Vi hjälper dig hitta specialister som levererar våtrum med garanti.", price: "80 000 – 250 000 kr", time: "3–6 veckor" },
+  { slug: "koksrenovering-stockholm", name: "Köksrenovering", icon: "🍳", desc: "Nytt kök från planering till färdigt resultat. Inkluderar demontering, el, VVS, montering av köksinredning och vitvaror.", price: "100 000 – 400 000 kr", time: "4–8 veckor" },
+  { slug: "tillbyggnad-stockholm", name: "Tillbyggnad", icon: "🏗️", desc: "Utöka din boyta med tillbyggnad, påbyggnad eller inglasning. Från bygglov till inflyttning.", price: "200 000 – 800 000 kr", time: "8–16 veckor" },
+  { slug: "nybyggnation-stockholm", name: "Nybyggnation", icon: "🏠", desc: "Bygga nytt hus eller villa? Vi matchar dig med erfarna totalentreprenörer i Stockholm.", price: "Från 2 000 000 kr", time: "6–12 månader" },
+  { slug: "totalrenovering-stockholm", name: "Totalrenovering", icon: "🔨", desc: "Helrenovering av lägenhet eller villa. Allt från stomme till ytskikt i en komplett lösning.", price: "300 000 – 1 500 000 kr", time: "8–20 veckor" },
+  { slug: "fasadrenovering-stockholm", name: "Fasadrenovering", icon: "🏘️", desc: "Ny fasad, puts, målning och tilläggsisolering. Förbättra husets utseende och energieffektivitet.", price: "150 000 – 500 000 kr", time: "4–8 veckor" },
+  { slug: "takrenovering-stockholm", name: "Takrenovering", icon: "🛖", desc: "Takbyte, omläggning av taktegel, plåttak eller takpapp. Inklusive underlagstak och isolering.", price: "120 000 – 400 000 kr", time: "2–6 veckor" },
+  { slug: "malning-stockholm", name: "Målning", icon: "🎨", desc: "Invändig och utvändig målning av professionella målare. Väggar, tak, fönster, fasad och snickerier.", price: "15 000 – 80 000 kr", time: "1–3 veckor" },
+  { slug: "golv-stockholm", name: "Golvläggning", icon: "🪵", desc: "Parkettgolv, laminat, vinyl, klinker eller trägolv. Slipning och renovering av befintliga golv.", price: "20 000 – 100 000 kr", time: "1–2 veckor" },
+  { slug: "el-stockholm", name: "Elarbeten", icon: "⚡", desc: "Elinstallationer, gruppcentraler, belysning, laddboxar och smarta hem-lösningar av behöriga elektriker.", price: "10 000 – 150 000 kr", time: "1–4 veckor" },
+  { slug: "vvs-stockholm", name: "VVS", icon: "🔧", desc: "Vattenledningar, avlopp, golvvärme, värmepumpar och ventilation av certifierade VVS-tekniker.", price: "15 000 – 200 000 kr", time: "1–4 veckor" },
+  { slug: "attefallshus-stockholm", name: "Attefallshus", icon: "🏡", desc: "Bygglovsbefriade attefallshus som gäststuga, kontor eller uthyrningsobjekt. Nyckelfärdigt.", price: "300 000 – 700 000 kr", time: "6–12 veckor" },
 ];
 
 export default function TjansterPage() {

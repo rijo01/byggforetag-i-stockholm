@@ -10,6 +10,8 @@ interface QuoteFormProps {
 
 export default function QuoteForm({ compact, serviceType, district }: QuoteFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,9 +22,29 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
     budget: "",
   });
 
-  const handleSubmit = () => {
-    console.log("Quote request:", formData);
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.description) {
+      setError("Fyll i alla obligatoriska fält");
+      return;
+    }
+    setError("");
+    setSending(true);
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Något gick fel. Försök igen.");
+      }
+    } catch {
+      setError("Kunde inte skicka.");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -44,20 +66,20 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
       <div className="space-y-3">
         <div>
           <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Namn *" />
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Namn *" />
         </div>
         <div>
           <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Telefon *" />
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Telefon *" />
         </div>
         <div>
           <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="E-post *" />
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="E-post *" />
         </div>
         {!serviceType && (
           <div>
             <select value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
               <option value="">Välj projekttyp</option>
               <option value="badrumsrenovering">Badrumsrenovering</option>
               <option value="koksrenovering">Köksrenovering</option>
@@ -76,12 +98,13 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
         )}
         <div>
           <textarea rows={3} value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
             placeholder="Beskriv ditt projekt kort..." />
         </div>
-        <button type="button" onClick={handleSubmit}
-          className="w-full px-6 py-2.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 transition-all shadow-md text-sm">
-          Skicka förfrågan – Gratis
+        {error && <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-sm">{error}</div>}
+        <button type="button" onClick={handleSubmit} disabled={sending}
+          className="w-full px-6 py-2.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-md text-sm">
+          {sending ? "Skickar..." : "Skicka förfrågan – Gratis"}
         </button>
         <p className="text-xs text-gray-400 text-center">Inga förpliktelser. Upp till 3 offerter inom 24h.</p>
       </div>
@@ -102,26 +125,26 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Namn *</label>
             <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Anna Svensson" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="Anna Svensson" />
           </div>
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">Telefon *</label>
             <input type="tel" id="phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="070-123 45 67" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="070-123 45 67" />
           </div>
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">E-post *</label>
           <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="anna@exempel.se" />
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" placeholder="anna@exempel.se" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5">Typ av projekt *</label>
             <select id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
               <option value="">Välj projekttyp</option>
               <option value="badrumsrenovering">Badrumsrenovering</option>
               <option value="koksrenovering">Köksrenovering</option>
@@ -140,7 +163,7 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
           <div>
             <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1.5">Område *</label>
             <select id="area" value={formData.area} onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
               <option value="">Välj område</option>
               <option value="sodermalm">Södermalm</option>
               <option value="ostermalm">Östermalm</option>
@@ -161,7 +184,7 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
         <div>
           <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1.5">Ungefärlig budget</label>
           <select id="budget" value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white">
             <option value="">Välj budget</option>
             <option value="under-100k">Under 100 000 kr</option>
             <option value="100k-300k">100 000 – 300 000 kr</option>
@@ -175,13 +198,15 @@ export default function QuoteForm({ compact, serviceType, district }: QuoteFormP
         <div>
           <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1.5">Beskriv ditt projekt *</label>
           <textarea id="description" rows={4} value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none"
             placeholder="Beskriv vad du behöver hjälp med, storlek på projekt, eventuella önskemål..." />
         </div>
 
-        <button type="button" onClick={handleSubmit}
-          className="w-full px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 transition-all shadow-md hover:shadow-lg text-sm">
-          Skicka offertförfrågan – Gratis
+        {error && <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">{error}</div>}
+
+        <button type="button" onClick={handleSubmit} disabled={sending}
+          className="w-full px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg text-sm">
+          {sending ? "Skickar..." : "Skicka offertförfrågan – Gratis"}
         </button>
         <p className="text-xs text-gray-400 text-center">Inga förpliktelser. Upp till 3 offerter inom 24h.</p>
       </div>
