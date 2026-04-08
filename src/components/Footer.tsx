@@ -26,6 +26,9 @@ const footerLinks = {
     { href: "/integritetspolicy", label: "Integritetspolicy" },
     { href: "/sitemap.xml", label: "Sitemap" },
   ],
+  resurser: [
+    { href: "https://www.infofinder.se/byggforetag/stockholm", label: "Hitta byggföretag i Stockholm", external: true },
+  ],
 };
 
 export default function Footer() {
@@ -78,6 +81,11 @@ export default function Footer() {
               {footerLinks.info.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-gray-400 hover:text-accent-400 transition-colors">{link.label}</Link>
+                </li>
+              ))}
+              {footerLinks.resurser.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-accent-400 transition-colors">{link.label}</a>
                 </li>
               ))}
             </ul>
